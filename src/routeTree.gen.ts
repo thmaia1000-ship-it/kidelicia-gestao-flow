@@ -14,8 +14,15 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedClientesRouteImport } from './routes/_authenticated/clientes'
 import { Route as AuthenticatedPainelRouteImport } from './routes/_authenticated/painel'
+import { Route as AuthenticatedPendenciasRouteImport } from './routes/_authenticated/pendencias'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedVendedoresRouteImport } from './routes/_authenticated/vendedores'
+import { Route as AuthenticatedOrcamentosIndexRouteImport } from './routes/_authenticated/orcamentos.index'
+import { Route as AuthenticatedOrcamentosIdRouteImport } from './routes/_authenticated/orcamentos.$id'
+import { Route as AuthenticatedPedidosIndexRouteImport } from './routes/_authenticated/pedidos.index'
+import { Route as AuthenticatedPedidosIdRouteImport } from './routes/_authenticated/pedidos.$id'
+import { Route as AuthenticatedPreVendasIndexRouteImport } from './routes/_authenticated/pre-vendas.index'
+import { Route as AuthenticatedPreVendasIdRouteImport } from './routes/_authenticated/pre-vendas.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,6 +48,11 @@ const AuthenticatedPainelRoute = AuthenticatedPainelRouteImport.update({
   path: '/painel',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPendenciasRoute = AuthenticatedPendenciasRouteImport.update({
+  id: '/pendencias',
+  path: '/pendencias',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
@@ -51,22 +63,71 @@ const AuthenticatedVendedoresRoute = AuthenticatedVendedoresRouteImport.update({
   path: '/vendedores',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedOrcamentosIndexRoute =
+  AuthenticatedOrcamentosIndexRouteImport.update({
+    id: '/orcamentos/',
+    path: '/orcamentos/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOrcamentosIdRoute =
+  AuthenticatedOrcamentosIdRouteImport.update({
+    id: '/orcamentos/$id',
+    path: '/orcamentos/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPedidosIndexRoute =
+  AuthenticatedPedidosIndexRouteImport.update({
+    id: '/pedidos/',
+    path: '/pedidos/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPedidosIdRoute = AuthenticatedPedidosIdRouteImport.update({
+  id: '/pedidos/$id',
+  path: '/pedidos/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPreVendasIndexRoute =
+  AuthenticatedPreVendasIndexRouteImport.update({
+    id: '/pre-vendas/',
+    path: '/pre-vendas/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPreVendasIdRoute =
+  AuthenticatedPreVendasIdRouteImport.update({
+    id: '/pre-vendas/$id',
+    path: '/pre-vendas/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/clientes': typeof AuthenticatedClientesRoute
   '/painel': typeof AuthenticatedPainelRoute
+  '/pendencias': typeof AuthenticatedPendenciasRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/vendedores': typeof AuthenticatedVendedoresRoute
+  '/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
+  '/pedidos/$id': typeof AuthenticatedPedidosIdRoute
+  '/pre-vendas/$id': typeof AuthenticatedPreVendasIdRoute
+  '/orcamentos/': typeof AuthenticatedOrcamentosIndexRoute
+  '/pedidos/': typeof AuthenticatedPedidosIndexRoute
+  '/pre-vendas/': typeof AuthenticatedPreVendasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/clientes': typeof AuthenticatedClientesRoute
   '/painel': typeof AuthenticatedPainelRoute
+  '/pendencias': typeof AuthenticatedPendenciasRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/vendedores': typeof AuthenticatedVendedoresRoute
+  '/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
+  '/pedidos/$id': typeof AuthenticatedPedidosIdRoute
+  '/pre-vendas/$id': typeof AuthenticatedPreVendasIdRoute
+  '/orcamentos': typeof AuthenticatedOrcamentosIndexRoute
+  '/pedidos': typeof AuthenticatedPedidosIndexRoute
+  '/pre-vendas': typeof AuthenticatedPreVendasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -75,15 +136,47 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/clientes': typeof AuthenticatedClientesRoute
   '/_authenticated/painel': typeof AuthenticatedPainelRoute
+  '/_authenticated/pendencias': typeof AuthenticatedPendenciasRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/vendedores': typeof AuthenticatedVendedoresRoute
+  '/_authenticated/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
+  '/_authenticated/pedidos/$id': typeof AuthenticatedPedidosIdRoute
+  '/_authenticated/pre-vendas/$id': typeof AuthenticatedPreVendasIdRoute
+  '/_authenticated/orcamentos/': typeof AuthenticatedOrcamentosIndexRoute
+  '/_authenticated/pedidos/': typeof AuthenticatedPedidosIndexRoute
+  '/_authenticated/pre-vendas/': typeof AuthenticatedPreVendasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/clientes' | '/painel' | '/produtos' | '/vendedores'
+    | '/'
+    | '/auth'
+    | '/clientes'
+    | '/painel'
+    | '/pendencias'
+    | '/produtos'
+    | '/vendedores'
+    | '/orcamentos/$id'
+    | '/pedidos/$id'
+    | '/pre-vendas/$id'
+    | '/orcamentos/'
+    | '/pedidos/'
+    | '/pre-vendas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/clientes' | '/painel' | '/produtos' | '/vendedores'
+  to:
+    | '/'
+    | '/auth'
+    | '/clientes'
+    | '/painel'
+    | '/pendencias'
+    | '/produtos'
+    | '/vendedores'
+    | '/orcamentos/$id'
+    | '/pedidos/$id'
+    | '/pre-vendas/$id'
+    | '/orcamentos'
+    | '/pedidos'
+    | '/pre-vendas'
   id:
     | '__root__'
     | '/'
@@ -91,8 +184,15 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/clientes'
     | '/_authenticated/painel'
+    | '/_authenticated/pendencias'
     | '/_authenticated/produtos'
     | '/_authenticated/vendedores'
+    | '/_authenticated/orcamentos/$id'
+    | '/_authenticated/pedidos/$id'
+    | '/_authenticated/pre-vendas/$id'
+    | '/_authenticated/orcamentos/'
+    | '/_authenticated/pedidos/'
+    | '/_authenticated/pre-vendas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -138,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPainelRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/pendencias': {
+      id: '/_authenticated/pendencias'
+      path: '/pendencias'
+      fullPath: '/pendencias'
+      preLoaderRoute: typeof AuthenticatedPendenciasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/produtos': {
       id: '/_authenticated/produtos'
       path: '/produtos'
@@ -152,21 +259,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedVendedoresRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/orcamentos/': {
+      id: '/_authenticated/orcamentos/'
+      path: '/orcamentos'
+      fullPath: '/orcamentos/'
+      preLoaderRoute: typeof AuthenticatedOrcamentosIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/orcamentos/$id': {
+      id: '/_authenticated/orcamentos/$id'
+      path: '/orcamentos/$id'
+      fullPath: '/orcamentos/$id'
+      preLoaderRoute: typeof AuthenticatedOrcamentosIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pedidos/': {
+      id: '/_authenticated/pedidos/'
+      path: '/pedidos'
+      fullPath: '/pedidos/'
+      preLoaderRoute: typeof AuthenticatedPedidosIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pedidos/$id': {
+      id: '/_authenticated/pedidos/$id'
+      path: '/pedidos/$id'
+      fullPath: '/pedidos/$id'
+      preLoaderRoute: typeof AuthenticatedPedidosIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pre-vendas/': {
+      id: '/_authenticated/pre-vendas/'
+      path: '/pre-vendas'
+      fullPath: '/pre-vendas/'
+      preLoaderRoute: typeof AuthenticatedPreVendasIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pre-vendas/$id': {
+      id: '/_authenticated/pre-vendas/$id'
+      path: '/pre-vendas/$id'
+      fullPath: '/pre-vendas/$id'
+      preLoaderRoute: typeof AuthenticatedPreVendasIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedClientesRoute: typeof AuthenticatedClientesRoute
   AuthenticatedPainelRoute: typeof AuthenticatedPainelRoute
+  AuthenticatedPendenciasRoute: typeof AuthenticatedPendenciasRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedVendedoresRoute: typeof AuthenticatedVendedoresRoute
+  AuthenticatedOrcamentosIdRoute: typeof AuthenticatedOrcamentosIdRoute
+  AuthenticatedPedidosIdRoute: typeof AuthenticatedPedidosIdRoute
+  AuthenticatedPreVendasIdRoute: typeof AuthenticatedPreVendasIdRoute
+  AuthenticatedOrcamentosIndexRoute: typeof AuthenticatedOrcamentosIndexRoute
+  AuthenticatedPedidosIndexRoute: typeof AuthenticatedPedidosIndexRoute
+  AuthenticatedPreVendasIndexRoute: typeof AuthenticatedPreVendasIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedClientesRoute: AuthenticatedClientesRoute,
   AuthenticatedPainelRoute: AuthenticatedPainelRoute,
+  AuthenticatedPendenciasRoute: AuthenticatedPendenciasRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedVendedoresRoute: AuthenticatedVendedoresRoute,
+  AuthenticatedOrcamentosIdRoute: AuthenticatedOrcamentosIdRoute,
+  AuthenticatedPedidosIdRoute: AuthenticatedPedidosIdRoute,
+  AuthenticatedPreVendasIdRoute: AuthenticatedPreVendasIdRoute,
+  AuthenticatedOrcamentosIndexRoute: AuthenticatedOrcamentosIndexRoute,
+  AuthenticatedPedidosIndexRoute: AuthenticatedPedidosIndexRoute,
+  AuthenticatedPreVendasIndexRoute: AuthenticatedPreVendasIndexRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
