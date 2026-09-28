@@ -13,9 +13,16 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedClientesRouteImport } from './routes/_authenticated/clientes'
+import { Route as AuthenticatedComprasRouteImport } from './routes/_authenticated/compras'
+import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
+import { Route as AuthenticatedEstoqueRouteImport } from './routes/_authenticated/estoque'
+import { Route as AuthenticatedFinanceiroRouteImport } from './routes/_authenticated/financeiro'
+import { Route as AuthenticatedImportacoesRouteImport } from './routes/_authenticated/importacoes'
 import { Route as AuthenticatedPainelRouteImport } from './routes/_authenticated/painel'
 import { Route as AuthenticatedPendenciasRouteImport } from './routes/_authenticated/pendencias'
+import { Route as AuthenticatedProducaoRouteImport } from './routes/_authenticated/producao'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
+import { Route as AuthenticatedRelatoriosRouteImport } from './routes/_authenticated/relatorios'
 import { Route as AuthenticatedVendedoresRouteImport } from './routes/_authenticated/vendedores'
 import { Route as AuthenticatedOrcamentosIndexRouteImport } from './routes/_authenticated/orcamentos.index'
 import { Route as AuthenticatedOrcamentosIdRouteImport } from './routes/_authenticated/orcamentos.$id'
@@ -43,6 +50,33 @@ const AuthenticatedClientesRoute = AuthenticatedClientesRouteImport.update({
   path: '/clientes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedComprasRoute = AuthenticatedComprasRouteImport.update({
+  id: '/compras',
+  path: '/compras',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedConfiguracoesRoute =
+  AuthenticatedConfiguracoesRouteImport.update({
+    id: '/configuracoes',
+    path: '/configuracoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedEstoqueRoute = AuthenticatedEstoqueRouteImport.update({
+  id: '/estoque',
+  path: '/estoque',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFinanceiroRoute = AuthenticatedFinanceiroRouteImport.update({
+  id: '/financeiro',
+  path: '/financeiro',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedImportacoesRoute =
+  AuthenticatedImportacoesRouteImport.update({
+    id: '/importacoes',
+    path: '/importacoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedPainelRoute = AuthenticatedPainelRouteImport.update({
   id: '/painel',
   path: '/painel',
@@ -53,9 +87,19 @@ const AuthenticatedPendenciasRoute = AuthenticatedPendenciasRouteImport.update({
   path: '/pendencias',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedProducaoRoute = AuthenticatedProducaoRouteImport.update({
+  id: '/producao',
+  path: '/producao',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRelatoriosRoute = AuthenticatedRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedVendedoresRoute = AuthenticatedVendedoresRouteImport.update({
@@ -103,9 +147,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/clientes': typeof AuthenticatedClientesRoute
+  '/compras': typeof AuthenticatedComprasRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/estoque': typeof AuthenticatedEstoqueRoute
+  '/financeiro': typeof AuthenticatedFinanceiroRoute
+  '/importacoes': typeof AuthenticatedImportacoesRoute
   '/painel': typeof AuthenticatedPainelRoute
   '/pendencias': typeof AuthenticatedPendenciasRoute
+  '/producao': typeof AuthenticatedProducaoRoute
   '/produtos': typeof AuthenticatedProdutosRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/vendedores': typeof AuthenticatedVendedoresRoute
   '/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
   '/pedidos/$id': typeof AuthenticatedPedidosIdRoute
@@ -118,9 +169,16 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/clientes': typeof AuthenticatedClientesRoute
+  '/compras': typeof AuthenticatedComprasRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/estoque': typeof AuthenticatedEstoqueRoute
+  '/financeiro': typeof AuthenticatedFinanceiroRoute
+  '/importacoes': typeof AuthenticatedImportacoesRoute
   '/painel': typeof AuthenticatedPainelRoute
   '/pendencias': typeof AuthenticatedPendenciasRoute
+  '/producao': typeof AuthenticatedProducaoRoute
   '/produtos': typeof AuthenticatedProdutosRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/vendedores': typeof AuthenticatedVendedoresRoute
   '/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
   '/pedidos/$id': typeof AuthenticatedPedidosIdRoute
@@ -135,9 +193,16 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/clientes': typeof AuthenticatedClientesRoute
+  '/_authenticated/compras': typeof AuthenticatedComprasRoute
+  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/_authenticated/estoque': typeof AuthenticatedEstoqueRoute
+  '/_authenticated/financeiro': typeof AuthenticatedFinanceiroRoute
+  '/_authenticated/importacoes': typeof AuthenticatedImportacoesRoute
   '/_authenticated/painel': typeof AuthenticatedPainelRoute
   '/_authenticated/pendencias': typeof AuthenticatedPendenciasRoute
+  '/_authenticated/producao': typeof AuthenticatedProducaoRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
+  '/_authenticated/relatorios': typeof AuthenticatedRelatoriosRoute
   '/_authenticated/vendedores': typeof AuthenticatedVendedoresRoute
   '/_authenticated/orcamentos/$id': typeof AuthenticatedOrcamentosIdRoute
   '/_authenticated/pedidos/$id': typeof AuthenticatedPedidosIdRoute
@@ -152,9 +217,16 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/clientes'
+    | '/compras'
+    | '/configuracoes'
+    | '/estoque'
+    | '/financeiro'
+    | '/importacoes'
     | '/painel'
     | '/pendencias'
+    | '/producao'
     | '/produtos'
+    | '/relatorios'
     | '/vendedores'
     | '/orcamentos/$id'
     | '/pedidos/$id'
@@ -167,9 +239,16 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/clientes'
+    | '/compras'
+    | '/configuracoes'
+    | '/estoque'
+    | '/financeiro'
+    | '/importacoes'
     | '/painel'
     | '/pendencias'
+    | '/producao'
     | '/produtos'
+    | '/relatorios'
     | '/vendedores'
     | '/orcamentos/$id'
     | '/pedidos/$id'
@@ -183,9 +262,16 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/clientes'
+    | '/_authenticated/compras'
+    | '/_authenticated/configuracoes'
+    | '/_authenticated/estoque'
+    | '/_authenticated/financeiro'
+    | '/_authenticated/importacoes'
     | '/_authenticated/painel'
     | '/_authenticated/pendencias'
+    | '/_authenticated/producao'
     | '/_authenticated/produtos'
+    | '/_authenticated/relatorios'
     | '/_authenticated/vendedores'
     | '/_authenticated/orcamentos/$id'
     | '/_authenticated/pedidos/$id'
@@ -231,6 +317,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedClientesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/compras': {
+      id: '/_authenticated/compras'
+      path: '/compras'
+      fullPath: '/compras'
+      preLoaderRoute: typeof AuthenticatedComprasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/configuracoes': {
+      id: '/_authenticated/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/estoque': {
+      id: '/_authenticated/estoque'
+      path: '/estoque'
+      fullPath: '/estoque'
+      preLoaderRoute: typeof AuthenticatedEstoqueRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/financeiro': {
+      id: '/_authenticated/financeiro'
+      path: '/financeiro'
+      fullPath: '/financeiro'
+      preLoaderRoute: typeof AuthenticatedFinanceiroRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/importacoes': {
+      id: '/_authenticated/importacoes'
+      path: '/importacoes'
+      fullPath: '/importacoes'
+      preLoaderRoute: typeof AuthenticatedImportacoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/painel': {
       id: '/_authenticated/painel'
       path: '/painel'
@@ -245,11 +366,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPendenciasRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/producao': {
+      id: '/_authenticated/producao'
+      path: '/producao'
+      fullPath: '/producao'
+      preLoaderRoute: typeof AuthenticatedProducaoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/produtos': {
       id: '/_authenticated/produtos'
       path: '/produtos'
       fullPath: '/produtos'
       preLoaderRoute: typeof AuthenticatedProdutosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/relatorios': {
+      id: '/_authenticated/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof AuthenticatedRelatoriosRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/vendedores': {
@@ -306,9 +441,16 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedClientesRoute: typeof AuthenticatedClientesRoute
+  AuthenticatedComprasRoute: typeof AuthenticatedComprasRoute
+  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
+  AuthenticatedEstoqueRoute: typeof AuthenticatedEstoqueRoute
+  AuthenticatedFinanceiroRoute: typeof AuthenticatedFinanceiroRoute
+  AuthenticatedImportacoesRoute: typeof AuthenticatedImportacoesRoute
   AuthenticatedPainelRoute: typeof AuthenticatedPainelRoute
   AuthenticatedPendenciasRoute: typeof AuthenticatedPendenciasRoute
+  AuthenticatedProducaoRoute: typeof AuthenticatedProducaoRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
+  AuthenticatedRelatoriosRoute: typeof AuthenticatedRelatoriosRoute
   AuthenticatedVendedoresRoute: typeof AuthenticatedVendedoresRoute
   AuthenticatedOrcamentosIdRoute: typeof AuthenticatedOrcamentosIdRoute
   AuthenticatedPedidosIdRoute: typeof AuthenticatedPedidosIdRoute
@@ -320,9 +462,16 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedClientesRoute: AuthenticatedClientesRoute,
+  AuthenticatedComprasRoute: AuthenticatedComprasRoute,
+  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
+  AuthenticatedEstoqueRoute: AuthenticatedEstoqueRoute,
+  AuthenticatedFinanceiroRoute: AuthenticatedFinanceiroRoute,
+  AuthenticatedImportacoesRoute: AuthenticatedImportacoesRoute,
   AuthenticatedPainelRoute: AuthenticatedPainelRoute,
   AuthenticatedPendenciasRoute: AuthenticatedPendenciasRoute,
+  AuthenticatedProducaoRoute: AuthenticatedProducaoRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
+  AuthenticatedRelatoriosRoute: AuthenticatedRelatoriosRoute,
   AuthenticatedVendedoresRoute: AuthenticatedVendedoresRoute,
   AuthenticatedOrcamentosIdRoute: AuthenticatedOrcamentosIdRoute,
   AuthenticatedPedidosIdRoute: AuthenticatedPedidosIdRoute,
