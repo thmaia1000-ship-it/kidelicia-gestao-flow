@@ -79,7 +79,7 @@ export function ItemsEditor({
       const { data, error } = await supabase
         .from(table)
         .select("*")
-        .eq(fk, parentId)
+        .eq(fk as never, parentId as never)
         .order("created_at");
       if (error) throw error;
       return (data ?? []) as unknown as ItemRow[];

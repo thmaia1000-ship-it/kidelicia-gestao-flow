@@ -558,7 +558,7 @@ function PedidoDetalhe() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="text-base font-bold text-[#202124]">
-              Confirmar Expedição — Pedido #{o.number}
+              Confirmar Expedição — Pedido #{String(o.number ?? "")}
             </DialogTitle>
             <p className="text-xs text-muted-foreground">
               A expedição baixa o estoque físico comercial e consome a reserva correspondente uma
@@ -621,7 +621,7 @@ function PedidoDetalhe() {
               })}
             </div>
             <p className="text-[11px] text-muted-foreground">
-              Ao gerar a ordem, ela ficará vinculada ao Pedido #{o.number} para ser atendida assim
+              Ao gerar a ordem, ela ficará vinculada ao Pedido #{String(o.number ?? "")} para ser atendida assim
               que a indústria entregar o lote conferido.
             </p>
           </div>
@@ -676,7 +676,7 @@ function PedidoDetalhe() {
               <div>
                 <span className="text-muted-foreground">Condição de Pagamento:</span>
                 <p className="font-bold">{(o.payment_terms as string) || "À vista"}</p>
-                {o.due_date && (
+                {Boolean(o.due_date) && (
                   <p className="text-muted-foreground">
                     Vencimento: {dateBR(o.due_date as string)}
                   </p>
@@ -702,7 +702,7 @@ function PedidoDetalhe() {
                     <tr key={idx}>
                       <td className="p-2 font-medium">{i.description_snapshot}</td>
                       <td className="p-2 text-right font-bold">
-                        {i.qty_commercial} {i.commercialUnit}
+                        {i.qty_commercial} {i.commercial_unit}
                       </td>
                       <td className="p-2 text-right text-muted-foreground">{i.factor_to_base}</td>
                       <td className="p-2 text-right">{i.qty_base} UN</td>

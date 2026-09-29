@@ -42,7 +42,7 @@ function DashboardComercial() {
   const { data: membership } = useMembership();
   const orgId = membership?.organization?.id;
   const isVendedor =
-    membership?.roles.includes("vendedor") &&
+    membership?.roles.includes("comercial") &&
     !membership?.roles.includes("administrador") &&
     !membership?.roles.includes("gestor");
   const userEmail = membership?.email || "";
