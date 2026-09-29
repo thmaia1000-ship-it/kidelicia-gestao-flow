@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
-import { ROLE_LABELS, canAdmin, useMembership, type AppRole } from "@/lib/session";
+import { canAdmin, useMembership } from "@/lib/session";
+import { UsersManager } from "@/components/users-manager";
 
 export const Route = createFileRoute("/_authenticated/configuracoes")({
   head: () => ({
@@ -237,75 +238,13 @@ function Configuracoes() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-lg border bg-card">
-            <table className="w-full min-w-[640px] text-sm">
-              <thead className="bg-secondary/70">
-                <tr>
-                  <th className="px-3 py-2 text-left font-semibold">Usuário</th>
-                  <th className="px-3 py-2 text-left font-semibold">Situação</th>
-                  <th className="px-3 py-2 text-left font-semibold">Papéis</th>
-                  <th className="px-3 py-2 text-left font-semibold">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(members.data?.members ?? []).map((m) => {
-                  const uid = m.user_id as string;
-                  const roles = (members.data?.roles ?? []).filter((r) => r.user_id === uid);
-                  const isSelf = uid === membership?.userId;
-                  return (
-                    <tr key={m.id as string} className="border-t">
-                      <td className="px-3 py-2">
-                        {isSelf ? `${membership?.email} (você)` : uid.slice(0, 8) + "…"}
-                      </td>
-                      <td className="px-3 py-2">{m.status as string}</td>
-                      <td className="px-3 py-2">
-                        {roles.map((r) => ROLE_LABELS[r.role as AppRole]).join(", ") || "—"}
-                      </td>
-                      <td className="px-3 py-2">
-                        {isAdministrator && !isSelf && (
-                          <div className="flex flex-wrap items-center gap-2">
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={() =>
-                                setStatus.mutate({
-                                  id: m.id as string,
-                                  status: m.status === "ativo" ? "inativo" : "ativo",
-                                })
-                              }
-                            >
-                              {m.status === "ativo" ? "Desativar" : "Aprovar acesso"}
-                            </Button>
-                            <select
-                              className="h-8 rounded-md border border-input bg-background px-2 text-sm"
-                              defaultValue=""
-                              onChange={(e) => {
-                                if (!e.target.value) return;
-                                grantRole.mutate({ userId: uid, role: e.target.value as AppRole });
-                                e.target.value = "";
-                              }}
-                            >
-                              <option value="">Atribuir papel...</option>
-                              {(Object.keys(ROLE_LABELS) as AppRole[]).map((r) => (
-                                <option key={r} value={r}>
-                                  {ROLE_LABELS[r]}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        )}
-                        {isSelf && (
-                          <span className="text-xs text-muted-foreground">
-                            Não é possível alterar o próprio papel.
-                          </span>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          {isAdministrator && orgId ? (
+            <UsersManager orgId={orgId} selfId={membership?.userId} />
+          ) : (
+            <p className="rounded-lg border bg-card p-4 text-sm text-muted-foreground">
+              Somente administradores podem criar e editar acessos.
+            </p>
+          )}
         </TabsContent>
       </Tabs>
     </div>
