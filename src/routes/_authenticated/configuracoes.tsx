@@ -105,47 +105,6 @@ function Configuracoes() {
     onError: (e: Error) => toast.error(e.message),
   });
 
-  const members = useQuery({
-    queryKey: ["members", orgId],
-    enabled: !!orgId,
-    queryFn: async () => {
-      const [{ data: m }, { data: r }] = await Promise.all([
-        supabase.from("organization_members").select("*").eq("organization_id", orgId!),
-        supabase.from("user_roles").select("*").eq("organization_id", orgId!),
-      ]);
-      return { members: m ?? [], roles: r ?? [] };
-    },
-  });
-
-  const setStatus = useMutation({
-    mutationFn: async ({ id, status }: { id: string; status: string }) => {
-      const { error } = await supabase
-        .from("organization_members")
-        .update({ status } as never)
-        .eq("id", id);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Acesso atualizado.");
-      members.refetch();
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
-  const grantRole = useMutation({
-    mutationFn: async ({ userId, role }: { userId: string; role: AppRole }) => {
-      const { error } = await supabase
-        .from("user_roles")
-        .insert({ organization_id: orgId, user_id: userId, role } as never);
-      if (error) throw error;
-    },
-    onSuccess: () => {
-      toast.success("Papel atribuído.");
-      members.refetch();
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
   return (
     <div>
       <PageHeader
