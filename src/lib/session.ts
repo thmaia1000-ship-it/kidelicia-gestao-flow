@@ -4,12 +4,7 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
 export type AppRole =
-  | "administrador"
-  | "gestor"
-  | "comercial"
-  | "financeiro"
-  | "producao"
-  | "consulta";
+  "administrador" | "gestor" | "comercial" | "financeiro" | "producao" | "consulta";
 
 export function useSession() {
   return useQuery({

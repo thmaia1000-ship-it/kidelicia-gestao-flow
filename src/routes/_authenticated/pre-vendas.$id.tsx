@@ -16,7 +16,10 @@ export const Route = createFileRoute("/_authenticated/pre-vendas/$id")({
   head: () => ({
     meta: [
       { title: "Pré-venda — Ki Delícia Gestão" },
-      { name: "description", content: "Detalhe da pré-venda com itens sugeridos e acompanhamento." },
+      {
+        name: "description",
+        content: "Detalhe da pré-venda com itens sugeridos e acompanhamento.",
+      },
       { property: "og:title", content: "Pré-venda — Ki Delícia Gestão" },
       { property: "og:description", content: "Itens sugeridos e acompanhamento comercial." },
       { property: "og:type", content: "website" },
@@ -72,7 +75,10 @@ function PreVendaDetalhe() {
 
   const update = useMutation({
     mutationFn: async (patch: Record<string, unknown>) => {
-      const { error } = await supabase.from("presales").update(patch as never).eq("id", id);
+      const { error } = await supabase
+        .from("presales")
+        .update(patch as never)
+        .eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -125,7 +131,10 @@ function PreVendaDetalhe() {
         );
         if (itErr) throw itErr;
       }
-      await supabase.from("presales").update({ status: "proposta" } as never).eq("id", id);
+      await supabase
+        .from("presales")
+        .update({ status: "proposta" } as never)
+        .eq("id", id);
       return quote.id as string;
     },
     onSuccess: (quoteId) => {

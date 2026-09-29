@@ -1,0 +1,6 @@
+{
+  "name": "Ki Delícia Gestão",
+  "description": "Sistema de gestão comercial da Ki Delícia: cadastros, pré-vendas, orçamentos e pedidos.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

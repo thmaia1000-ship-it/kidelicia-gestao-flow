@@ -248,7 +248,10 @@ function Vendedores() {
           </DialogHeader>
           <div className="grid gap-3">
             <Field label="Nome *">
-              <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+              <Input
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+              />
             </Field>
             <Field label="Classificação">
               <select

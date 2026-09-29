@@ -34,6 +34,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-vibrant: var(--primary-vibrant);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -63,42 +64,51 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.985 0.006 85);
-  --foreground: oklch(0.22 0.02 40);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.02 40);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.02 40);
-  --primary: oklch(0.52 0.19 27);
-  --primary-foreground: oklch(0.99 0.01 90);
-  --secondary: oklch(0.955 0.02 85);
-  --secondary-foreground: oklch(0.3 0.03 40);
-  --muted: oklch(0.955 0.012 85);
-  --muted-foreground: oklch(0.52 0.02 50);
-  --accent: oklch(0.87 0.16 88);
-  --accent-foreground: oklch(0.26 0.04 55);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.99 0.01 90);
-  --success: oklch(0.55 0.13 150);
-  --success-foreground: oklch(0.99 0.01 90);
-  --warning: oklch(0.8 0.15 80);
-  --warning-foreground: oklch(0.28 0.04 60);
-  --border: oklch(0.9 0.015 80);
-  --input: oklch(0.9 0.015 80);
-  --ring: oklch(0.52 0.19 27);
-  --chart-1: oklch(0.52 0.19 27);
-  --chart-2: oklch(0.8 0.15 80);
-  --chart-3: oklch(0.55 0.13 150);
-  --chart-4: oklch(0.6 0.1 250);
-  --chart-5: oklch(0.45 0.05 40);
-  --sidebar: oklch(0.32 0.09 28);
-  --sidebar-foreground: oklch(0.97 0.01 85);
-  --sidebar-primary: oklch(0.87 0.16 88);
-  --sidebar-primary-foreground: oklch(0.26 0.04 55);
-  --sidebar-accent: oklch(0.4 0.1 28);
-  --sidebar-accent-foreground: oklch(0.98 0.01 85);
-  --sidebar-border: oklch(0.42 0.09 28);
-  --sidebar-ring: oklch(0.87 0.16 88);
+  /* Ki Delícia Brand Palette:
+   * #ED1C24 (Vermelho Vivo Marca)
+   * #B5121B (Vermelho Escuro Botões/Contraste)
+   * #FFEA00 (Amarelo Forte Realces)
+   * #FFFFFF (Branco Superfícies)
+   * #F5F6F8 (Cinza Claro Fundo)
+   * #202124 (Grafite Texto e Navegação)
+   */
+  --background: #f5f6f8;
+  --foreground: #202124;
+  --card: #ffffff;
+  --card-foreground: #202124;
+  --popover: #ffffff;
+  --popover-foreground: #202124;
+  --primary: #b5121b;
+  --primary-foreground: #ffffff;
+  --primary-vibrant: #ed1c24;
+  --secondary: #f0f2f5;
+  --secondary-foreground: #202124;
+  --muted: #edf0f4;
+  --muted-foreground: #5f6368;
+  --accent: #ffea00;
+  --accent-foreground: #202124;
+  --destructive: #b5121b;
+  --destructive-foreground: #ffffff;
+  --success: #1e7e34;
+  --success-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --border: #e2e5e9;
+  --input: #d1d5db;
+  --ring: #ed1c24;
+  --chart-1: #ed1c24;
+  --chart-2: #ffea00;
+  --chart-3: #1e7e34;
+  --chart-4: #2563eb;
+  --chart-5: #202124;
+  --sidebar: #202124;
+  --sidebar-foreground: #f5f6f8;
+  --sidebar-primary: #ed1c24;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2e3034;
+  --sidebar-accent-foreground: #ffea00;
+  --sidebar-border: #33363a;
+  --sidebar-ring: #ffea00;
 }
 
 .dark {

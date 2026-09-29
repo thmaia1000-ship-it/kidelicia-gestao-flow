@@ -32,7 +32,10 @@ export const Route = createFileRoute("/_authenticated/clientes")({
           "Cadastro de clientes, filiais e lojas com documento textual, endereço estruturado e condição de pagamento.",
       },
       { property: "og:title", content: "Clientes e lojas — Ki Delícia Gestão" },
-      { property: "og:description", content: "Cadastro de clientes e lojas da operação Ki Delícia." },
+      {
+        property: "og:description",
+        content: "Cadastro de clientes e lojas da operação Ki Delícia.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

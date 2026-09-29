@@ -144,7 +144,10 @@ function Produtos() {
         commercial_unit: form.commercial_unit || "UN",
         units_per_package: Number(form.units_per_package) || 1,
         divisible: form.divisible,
-        net_weight: form.net_weight === null || form.net_weight === undefined ? null : Number(form.net_weight),
+        net_weight:
+          form.net_weight === null || form.net_weight === undefined
+            ? null
+            : Number(form.net_weight),
         weight_unit: form.weight_unit || null,
         ean: form.ean || null,
         ncm: form.ncm || null,
@@ -353,7 +356,10 @@ function Produtos() {
                 step="0.001"
                 value={form.net_weight ?? ""}
                 onChange={(e) =>
-                  setForm({ ...form, net_weight: e.target.value === "" ? null : Number(e.target.value) })
+                  setForm({
+                    ...form,
+                    net_weight: e.target.value === "" ? null : Number(e.target.value),
+                  })
                 }
               />
             </Field>
@@ -596,8 +602,8 @@ function PriceLists({
       <div className="rounded-lg border bg-card p-4">
         <p className="text-sm font-semibold">Prioridade de preço aplicada nos itens</p>
         <p className="mt-1 text-sm text-muted-foreground">
-          Preço negociado no item &gt; tabela vigente do cliente &gt; tabela geral vigente. O preço e
-          o fator ficam gravados no item; mudanças futuras no catálogo não recalculam pedidos
+          Preço negociado no item &gt; tabela vigente do cliente &gt; tabela geral vigente. O preço
+          e o fator ficam gravados no item; mudanças futuras no catálogo não recalculam pedidos
           confirmados.
         </p>
       </div>
@@ -664,7 +670,9 @@ function PriceLists({
               <select
                 className="h-9 rounded-md border border-input bg-background px-2 text-sm sm:col-span-2"
                 value={item.productId}
-                onChange={(e) => setItem({ ...item, productId: e.target.value, presentationId: "" })}
+                onChange={(e) =>
+                  setItem({ ...item, productId: e.target.value, presentationId: "" })
+                }
               >
                 <option value="">Produto...</option>
                 {products.map((p) => (

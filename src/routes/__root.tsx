@@ -80,7 +80,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Ki Delícia Gestão" },
-      { name: "description", content: "Sistema de gestão comercial da Ki Delícia: cadastros, pré-vendas, orçamentos e pedidos." },
+      {
+        name: "description",
+        content:
+          "Sistema de gestão comercial da Ki Delícia: cadastros, pré-vendas, orçamentos e pedidos.",
+      },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "Ki Delícia Gestão" },
       { property: "og:description", content: "Gestão comercial integrada da Ki Delícia." },

@@ -39,11 +39,7 @@ export function useProductsCatalog(orgId: string | undefined) {
     queryFn: async () => {
       const [{ data: products, error }, { data: presentations }, { data: priceItems }] =
         await Promise.all([
-          supabase
-            .from("products")
-            .select("*")
-            .eq("organization_id", orgId!)
-            .order("description"),
+          supabase.from("products").select("*").eq("organization_id", orgId!).order("description"),
           supabase.from("product_presentations").select("*").eq("organization_id", orgId!),
           supabase
             .from("price_list_items")
@@ -223,7 +219,9 @@ export function ItemsEditor({
     [items],
   );
 
-  const previewSubtotal = round2(Number(quantity || 0) * Number(price || 0) - Number(discount || 0));
+  const previewSubtotal = round2(
+    Number(quantity || 0) * Number(price || 0) - Number(discount || 0),
+  );
 
   return (
     <div className="space-y-4">

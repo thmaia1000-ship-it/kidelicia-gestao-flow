@@ -16,13 +16,13 @@ Conteúdo observado
 
 Destino no sistema
 
-00 VENDA GERAL ANO  2025.xlsx
+00 VENDA GERAL ANO 2025.xlsx
 
 Consolidado mensal de 2025 por produto, quantidade e valor; categorias de etiquetas e doces; total anual informado de R$ 587.706,30
 
 Histórico comercial, relatórios e reconciliação
 
-01 JANEIRO POR VENDEDOR  2025 OK.xlsx
+01 JANEIRO POR VENDEDOR 2025 OK.xlsx
 
 Quantidades e valores por vendedor e produto, distribuídos em dois blocos
 

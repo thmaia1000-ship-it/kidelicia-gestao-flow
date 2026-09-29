@@ -29,7 +29,10 @@ export const Route = createFileRoute("/_authenticated/orcamentos/")({
           "Orçamentos com validade, revisões e conversão única em pedido, preservando a versão aprovada.",
       },
       { property: "og:title", content: "Orçamentos — Ki Delícia Gestão" },
-      { property: "og:description", content: "Orçamentos com validade, revisões e conversão única." },
+      {
+        property: "og:description",
+        content: "Orçamentos com validade, revisões e conversão única.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

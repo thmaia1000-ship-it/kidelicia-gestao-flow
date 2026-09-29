@@ -147,14 +147,20 @@ export function DataTable<T>({
           <tbody>
             {loading && (
               <tr>
-                <td colSpan={columns.length} className="px-3 py-6 text-center text-muted-foreground">
+                <td
+                  colSpan={columns.length}
+                  className="px-3 py-6 text-center text-muted-foreground"
+                >
                   Carregando...
                 </td>
               </tr>
             )}
             {!loading && pageRows.length === 0 && (
               <tr>
-                <td colSpan={columns.length} className="px-3 py-6 text-center text-muted-foreground">
+                <td
+                  colSpan={columns.length}
+                  className="px-3 py-6 text-center text-muted-foreground"
+                >
                   {emptyMessage}
                 </td>
               </tr>
@@ -164,10 +170,7 @@ export function DataTable<T>({
                 <tr
                   key={rowKey(row)}
                   onClick={onRowClick ? () => onRowClick(row) : undefined}
-                  className={cn(
-                    "border-t",
-                    onRowClick && "cursor-pointer hover:bg-secondary/40",
-                  )}
+                  className={cn("border-t", onRowClick && "cursor-pointer hover:bg-secondary/40")}
                 >
                   {columns.map((col) => (
                     <td

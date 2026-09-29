@@ -39,8 +39,8 @@ export function ModulePlaceholder({
           Não implementado — {phase}
         </span>
         <p className="mt-4 text-sm text-muted-foreground">
-          Este módulo ainda não grava dados. Nada aqui movimenta estoque, caixa ou títulos, e nenhuma
-          ação de sucesso é simulada.
+          Este módulo ainda não grava dados. Nada aqui movimenta estoque, caixa ou títulos, e
+          nenhuma ação de sucesso é simulada.
         </p>
         <p className="mt-4 text-sm font-semibold">Escopo previsto:</p>
         <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-muted-foreground">

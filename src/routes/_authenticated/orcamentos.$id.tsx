@@ -63,7 +63,10 @@ function OrcamentoDetalhe() {
 
   const update = useMutation({
     mutationFn: async (patch: Record<string, unknown>) => {
-      const { error } = await supabase.from("quotes").update(patch as never).eq("id", id);
+      const { error } = await supabase
+        .from("quotes")
+        .update(patch as never)
+        .eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -88,7 +91,11 @@ function OrcamentoDetalhe() {
 
   if (quote.isLoading || !quote.data) return <p className="text-muted-foreground">Carregando...</p>;
   const q = quote.data;
-  const customer = q.customers as { trade_name?: string; legal_name?: string; price_list_id?: string } | null;
+  const customer = q.customers as {
+    trade_name?: string;
+    legal_name?: string;
+    price_list_id?: string;
+  } | null;
   const editable = canWrite && q.status === "rascunho";
 
   return (
@@ -102,13 +109,20 @@ function OrcamentoDetalhe() {
               Voltar
             </Link>
             {canWrite && q.status === "rascunho" && (
-              <Button variant="outline" onClick={() => update.mutate({ status: "enviado", sent_at: new Date().toISOString() })}>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  update.mutate({ status: "enviado", sent_at: new Date().toISOString() })
+                }
+              >
                 Marcar como enviado
               </Button>
             )}
             {canWrite && (q.status === "rascunho" || q.status === "enviado") && (
               <Button
-                onClick={() => update.mutate({ status: "aprovado", approved_at: new Date().toISOString() })}
+                onClick={() =>
+                  update.mutate({ status: "aprovado", approved_at: new Date().toISOString() })
+                }
               >
                 Registrar aprovação
               </Button>

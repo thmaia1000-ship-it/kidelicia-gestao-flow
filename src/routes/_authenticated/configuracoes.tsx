@@ -178,8 +178,8 @@ function Configuracoes() {
                 {saveOrg.isPending ? "Salvando..." : "Salvar"}
               </Button>
               <p className="mt-2 text-xs text-muted-foreground">
-                Logo: quando houver a arte isolada da marca, o upload será habilitado. Por enquanto o
-                nome é exibido em texto.
+                Logo: quando houver a arte isolada da marca, o upload será habilitado. Por enquanto
+                o nome é exibido em texto.
               </p>
             </div>
           </div>
